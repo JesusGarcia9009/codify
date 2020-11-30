@@ -65,5 +65,23 @@ Retornando y tocken con la siguiente estructura
 
 ![TOKEN](https://github.com/JesusGarcia9009/codify/blob/main/README/jwt.PNG)
 
+## Construido con 🛠
+
+
+Herramientas y lenguajes utilizados
+
+
+* [Java](https://www.java.com/) - Lenguaje de programacion.
+* [Maven](https://maven.apache.org/) - Manejador de dependencias.
+* [Eclipse](https://www.eclipse.org/) - IDE de desarrollo.
+* [DBeaver](https://dbeaver.io//) - Herramienta de base de datos.
+* [Swagger](https://swagger.io/) - Documentacion de los servicios.
+* [Lombok](https://projectlombok.org/) - Creacion de metodos basicos de objetos.
+
+
+## Autor.
+
+* **Jesús García** - *Trabajo Inicial-Programación-Dcumentación* 
+
 
 
