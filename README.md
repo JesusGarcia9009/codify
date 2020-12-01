@@ -53,6 +53,7 @@ Una vez que tenemos las bases de datos configuradas, la vista deberia quedar asi
 para generar la imagen se deben ejecutar los siguientes comandos
 
 ```
+mvn clean install
 docker build -t rm-codify-security .
 docker run --name rm-codify-security -p 8080:8080  rm-codify-security
 ```

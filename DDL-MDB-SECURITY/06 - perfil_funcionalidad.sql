@@ -1,6 +1,6 @@
 -- codify_security.perfil_funcionalidad definition
 
-CREATE TABLE `perfil_funcionalidad` (
+CREATE TABLE `codify_security`.`perfil_funcionalidad` (
   `id_perfil_funcionalidad` bigint(20) NOT NULL AUTO_INCREMENT,
   `escritura` int(11) NOT NULL,
   `lectura` int(11) NOT NULL,
