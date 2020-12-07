@@ -3,6 +3,7 @@
  */
 package com.ms.codify.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +25,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tenant")
-public class Tenant {
-
+public class Tenant implements Serializable {
+    
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_tenant", nullable = false)

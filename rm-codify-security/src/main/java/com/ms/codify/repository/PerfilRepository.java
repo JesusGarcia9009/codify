@@ -1,5 +1,6 @@
 package com.ms.codify.repository;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +16,9 @@ import com.ms.codify.entities.Perfil;
  */
 @Repository
 public interface PerfilRepository extends JpaRepository<Perfil, Long> {
+	
+	@Query("SELECT p FROM Perfil p join fetch p.perfilFuncionalidadList ")
+	List<Perfil> getAllPerfiles();
 
 	@Query("SELECT u.perfil FROM Usuario u fetch all properties WHERE u.idUsuario=:idUsuario")
 	Set<Perfil> findPerfilesByUserId(@Param("idUsuario") Long idUsuario);

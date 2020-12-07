@@ -3,6 +3,8 @@
  */
 package com.ms.codify.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,7 +26,12 @@ import org.hibernate.annotations.Type;
  */
 @Entity
 @Table(name = "perfil_funcionalidad")
-public class PerfilFuncionalidad {
+public class PerfilFuncionalidad implements Serializable {
+    
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

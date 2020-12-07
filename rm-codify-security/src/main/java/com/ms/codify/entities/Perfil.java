@@ -3,6 +3,7 @@
  */
 package com.ms.codify.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -28,8 +29,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "perfil")
-public class Perfil {
+public class Perfil implements Serializable {
     
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_perfil", nullable = false)

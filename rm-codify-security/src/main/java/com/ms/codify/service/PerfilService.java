@@ -23,5 +23,29 @@ public interface PerfilService {
 	 */
 	public List<PerfilesDto> listarPerfiles(); 
 	
+	/**
+	 * Obtiene un perfil asociado a un id
+	 * 
+	 * @param dto
+	 * @return PerfilesDto
+	 */
+	public PerfilesDto obtenerPerfil(Long idPerfil); 
+	
+	/**
+	 * Guardar datos modificados del perfil
+	 * 
+	 * @param Long idPerfil
+	 * @return PerfilesDto
+	 */
+	public PerfilesDto guardarPerfil(PerfilesDto perfil); 
+	
+	/**
+	 * Eliminar los datos del perfil
+	 * 
+	 * @param Long idPerfil
+	 * @return PerfilesDto
+	 */
+	public void eliminarPerfil(Long idPerfil); 
+	
 	
 }
