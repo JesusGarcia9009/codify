@@ -3,7 +3,7 @@ package com.ms.codify.exception;
 /**
  * NotFoundException - Excepcion para manejar el no encontrar resultados en la base de datos
  * 
- * @author Jesus Garcia
+ * @author DutyMachine
  * @version 1.0 Creacion
  * @since Java 11
  */

@@ -1,70 +1,81 @@
--- codify_security.tenant definition
+-- codify_security.languaje definition
+CREATE TABLE `languaje` (
+  `code` char(2) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `codify_security`.`tenant` (
-  `id_tenant` bigint(20) NOT NULL AUTO_INCREMENT,
-  `llave` varchar(50) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_tenant`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- codify_security.perfil definition
+-- codify_security.state definition
+CREATE TABLE `state` (
+  `id` bigint(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `codify_security`.`perfil` (
-  `id_perfil` bigint(20) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(200) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_perfil`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- codify_security.usuario definition
+-- codify_security.permit definition
 
-CREATE TABLE `codify_security`.`usuario` (
-  `id_usuario` bigint(20) NOT NULL AUTO_INCREMENT,
-  `apellido_materno` varchar(50) NOT NULL,
-  `apellido_paterno` varchar(50) NOT NULL,
+CREATE TABLE `permit` (
+  `id` bigint(10) NOT NULL AUTO_INCREMENT,
+  `description` varchar(500) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- codify_security.profile definition
+
+CREATE TABLE `profile` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- codify_security.profile_permit definition
+
+CREATE TABLE `profile_permit` (
+  `id_profile` bigint(20) NOT NULL,
+  `id_permit` bigint(10) NOT NULL,
+  PRIMARY KEY (`id_profile`,`id_permit`),
+  KEY `profile_permit_id_profile` (`id_profile`),
+  KEY `FK_ID_PERMIT` (`id_permit`),
+  CONSTRAINT `FK_ID_PERMIT` FOREIGN KEY (`id_permit`) REFERENCES `permit` (`id`),
+  CONSTRAINT `FK_ID_PROFILE` FOREIGN KEY (`id_profile`) REFERENCES `profile` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- codify_security.`user` definition
+
+CREATE TABLE `user` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `middle_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `pass` varchar(500) NOT NULL,
-  `rut` varchar(50) NOT NULL,
-  `id_tenant` bigint(20) NOT NULL,
-  PRIMARY KEY (`id_usuario`),
-  KEY `fk_usuario_id_tenant` (`id_tenant`),
-  CONSTRAINT `FK_ID_TENANT` FOREIGN KEY (`id_tenant`) REFERENCES `tenant` (`id_tenant`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
--- codify_security.funcionalidad definition
-
-CREATE TABLE `codify_security`.`funcionalidad` (
-  `id_funcionalidad` bigint(20) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(200) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_funcionalidad`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
-
--- codify_security.usuario_perfil definition
-
-CREATE TABLE `codify_security`.`usuario_perfil` (
-  `id_usuario` bigint(20) NOT NULL,
-  `id_perfil` bigint(20) NOT NULL,
-  PRIMARY KEY (`id_usuario`,`id_perfil`),
-  KEY `fk_usuario_perfil_id_perfil` (`id_perfil`),
-  CONSTRAINT `FK_ID_USUARIO` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
-  CONSTRAINT `FK_ID_PERFIL` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id_perfil`)
+  `code_languaje` char(2) NOT NULL,
+  `id_state` bigint(10) NOT NULL,
+  PRIMARY KEY (`username`),
+  KEY `fk_user_code_languaje` (`code_languaje`),
+  KEY `FK_USER_STATE` (`id_state`),
+  CONSTRAINT `FK_USER_CODE_LANGUAJE` FOREIGN KEY (`code_languaje`) REFERENCES `languaje` (`code`),
+  CONSTRAINT `FK_USER_STATE` FOREIGN KEY (`id_state`) REFERENCES `state` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- codify_security.perfil_funcionalidad definition
 
-CREATE TABLE `codify_security`.`perfil_funcionalidad` (
-  `id_perfil_funcionalidad` bigint(20) NOT NULL AUTO_INCREMENT,
-  `escritura` int(11) NOT NULL,
-  `lectura` int(11) NOT NULL,
-  `id_funcionalidad` bigint(20) NOT NULL,
-  `id_perfil` bigint(20) NOT NULL,
-  PRIMARY KEY (`id_perfil_funcionalidad`),
-  KEY `fk_perfil_funcionalidad_id_funcionalidad` (`id_funcionalidad`),
-  KEY `fk_perfil_funcionalidad_id_perfil` (`id_perfil`),
-  CONSTRAINT `fk_perfil_funcionalidad_id_funcionalidad` FOREIGN KEY (`id_funcionalidad`) REFERENCES `funcionalidad` (`id_funcionalidad`),
-  CONSTRAINT `fk_perfil_funcionalidad_id_perfil` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id_perfil`)
+-- codify_security.user_profile definition
+
+CREATE TABLE `user_profile` (
+  `id_user` varchar(50) NOT NULL,
+  `id_profile` bigint(20) NOT NULL,
+  `id_object` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_user`,`id_profile`),
+  KEY `user_profile_id_user_profile` (`id_user`),
+  KEY `FK_USER_PROFILE_ID_PROFILE` (`id_profile`),
+  CONSTRAINT `FK_USER_PROFILE_ID_PROFILE` FOREIGN KEY (`id_profile`) REFERENCES `profile` (`id`),
+  CONSTRAINT `FK_USER_PROFILE_ID_USER` FOREIGN KEY (`id_user`) REFERENCES `user` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+

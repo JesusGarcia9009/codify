@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /**
  * WebMvcConfig - Configuracion de los url permitidad por aplicacion - Spring Boot
  *
- * @author Jesus Garcia
+ * @author DutyMachine
  * @since 1.0
  * @version jdk-11
  */
@@ -21,7 +21,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	/**
 	 * Metodo de addCorsMappings para ngnx - Spring Boot
 	 *
-	 * @author Jesus Garcia
+	 * @author DutyMachine
 	 * @since 1.0
 	 * @version jdk-11
 	 */
@@ -34,7 +34,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     /**
 	 * Metodo de addResourceHandlers para ngnx - Spring Boot
 	 *
-	 * @author Jesus Garcia
+	 * @author DutyMachine
 	 * @since 1.0
 	 * @version jdk-11
 	 */

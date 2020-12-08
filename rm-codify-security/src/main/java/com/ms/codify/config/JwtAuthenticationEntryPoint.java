@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * JwtAuthenticationEntryPoint - Spring Boot
  *
- * @author Jesus Garcia
+ * @author DutyMachine
  * @since 1.0
  * @version jdk-11
  */
@@ -27,7 +27,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 	 * Metodo que se llama cuando el token no es valido o el usuario no se encuentra autorizado para 
      * acceder a el metodo invocado - Spring Boot
 	 *
-	 * @author Jesus Garcia
+	 * @author DutyMachine
 	 * @since 1.0
 	 * @version jdk-11
 	 */

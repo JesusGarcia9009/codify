@@ -8,7 +8,7 @@ import org.springframework.validation.ObjectError;
 /**
  * Excepcion para manejar que el contenido sea no permitido
  * 
- * @author Jesus Garcia
+ * @author DutyMachine
  * @version 1.0 Creacion
  * @since Java 11
  */

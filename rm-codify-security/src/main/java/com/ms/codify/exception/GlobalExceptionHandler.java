@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * Manejador Global de las excepciones - controla y ejecuta las excepciones declaradas
  * 
- * @author Jesus Garcia
+ * @author DutyMachine
  * @version 1.0 Creacion
  * @since Java 11
  */
@@ -33,7 +33,7 @@ public class GlobalExceptionHandler {
 
 	/**
 	 * Proporciona manejo de excepciones a lo largo de este servicio.
-	 * @author Jesus Garcia
+	 * @author DutyMachine
 	 * @param ex      The target exception
 	 * @param request The current request
 	 */

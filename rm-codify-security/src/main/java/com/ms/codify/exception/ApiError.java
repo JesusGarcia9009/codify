@@ -15,7 +15,7 @@ import lombok.Getter;
 /**
  * ApiError Formato de excepcion de API
  * 
- * @author Jesus Garcia
+ * @author DutyMachine
  * @version 1.0 Creacion
  * @since Java 11
  */

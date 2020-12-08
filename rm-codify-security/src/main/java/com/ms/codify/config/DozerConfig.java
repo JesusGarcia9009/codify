@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Configuracion Conversor Dozer para Model y DTO.
  *
- * @Author Jesus Garcia
+ * @author DutyMachine
  * @since 1.0
  * @version jdk-11
  */

@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * RestTemplateConfig - Spring Boot
  *
- * @author Jesus Garcia
+ * @author DutyMachine
  * @since 1.0
  * @version jdk-11
  */

@@ -19,7 +19,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 /**
  * JwtAuthenticationFilter (filtro por peticion http) - Spring Boot
  *
- * @author Jesus Garcia
+ * @author DutyMachine
  * @since 1.0
  * @version jdk-11
  */

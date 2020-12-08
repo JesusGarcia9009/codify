@@ -3,7 +3,7 @@ package com.ms.codify.utils;
 /**
  * ConstantesUtil clase de constantes para no dejar variables en duro
  * 
- * @author Jesus Garcia
+ * @author DutyMachine
  * @version 1.0 Creacion
  * @since Java 11
  */

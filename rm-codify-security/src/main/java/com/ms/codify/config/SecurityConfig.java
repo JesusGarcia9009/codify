@@ -25,7 +25,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 /**
  * SecurityConfig - Spring Boot
  *
- * @author Jesus Garcia
+ * @author DutyMachine
  * @since 1.0
  * @version jdk-11
  */
@@ -71,6 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		        .and()
 				.authorizeRequests()
 				.antMatchers(HttpMethod.POST, "/api/codify/login").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/codify/user/*").hasAnyAuthority("Administrator")
 				.antMatchers("/", "/favicon.ico", "/**/*.png", "/**/*.gif", "/**/*.svg", "/**/*.jpg", "/**/*.html",
 						"/**/*.css", "/**/*.js").permitAll()
 				.antMatchers("/v2/api-docs", 

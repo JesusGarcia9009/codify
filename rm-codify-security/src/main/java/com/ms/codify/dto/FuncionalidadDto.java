@@ -10,7 +10,7 @@ import lombok.ToString;
 /**
  * LoginResponseDto - Response - Spring Boot
  *
- * @author Jesus Garcia
+ * @author DutyMachine
  * @version jdk-11
  */
 @Getter

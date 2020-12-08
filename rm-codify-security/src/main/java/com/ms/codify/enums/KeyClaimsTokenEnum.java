@@ -4,18 +4,17 @@ package com.ms.codify.enums;
 /**
  * KeyClaimsTokenEnum - Claims_Token - Spring Boot
  *
- * @author Jesus Garcia
+ * @author DutyMachine
  * @version jdk-11
  */
 public enum KeyClaimsTokenEnum {
 	
-	ID_USUARIO("idUsuario"),
 	FULL_NAME("fullName"),
 	USERNAME("username"),
+	LANGUAJE("language_code"),
 	AUTHORITIES("authorities"),
-	RUT("rut"),
-	FUNCIONALIDADES("funcionalidades"),
-	TENANT("idTenant");
+	PERMITS("permits");
+	
 	
 	private String descripcion;
 	

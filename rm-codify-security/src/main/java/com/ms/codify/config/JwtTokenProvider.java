@@ -14,9 +14,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ms.codify.dto.CodifyUserDto;
-import com.ms.codify.dto.FuncionalidadDto;
 import com.ms.codify.enums.KeyClaimsTokenEnum;
+import com.ms.codify.token.CodifyUserDto;
+import com.ms.codify.token.PermitDto;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * JwtTokenProvider - Spring Boot
  *
- * @author Jesus Garcia
+ * @author DutyMachine
  * @since 1.0
  * @version jdk-11
  */
@@ -48,7 +48,7 @@ public class JwtTokenProvider {
 	/**
 	 * generateToken - JwtTokenProvider - Spring Boot
 	 *
-	 * @author Jesus Garcia
+	 * @author DutyMachine
 	 * @since 1.0
 	 * @version jdk-11
 	 * @param authentication -  Objeto de usuario autenticado
@@ -65,14 +65,12 @@ public class JwtTokenProvider {
 		Claims claims = Jwts.claims();
 
 		claims.put(KeyClaimsTokenEnum.AUTHORITIES.getDescripcion(), mapper.writeValueAsString(permisos));
-		claims.put(KeyClaimsTokenEnum.ID_USUARIO.getDescripcion(), userPrincipal.getIdUsuario());
 		claims.put(KeyClaimsTokenEnum.FULL_NAME.getDescripcion(), userPrincipal.getFullName());
 		claims.put(KeyClaimsTokenEnum.USERNAME.getDescripcion(), userPrincipal.getUsername());
-		claims.put(KeyClaimsTokenEnum.RUT.getDescripcion(), userPrincipal.getRut());
-		claims.put(KeyClaimsTokenEnum.TENANT.getDescripcion(), userPrincipal.getIdTenant());
-		claims.put(KeyClaimsTokenEnum.FUNCIONALIDADES.getDescripcion(), userPrincipal.getFuncionalidades());
+		claims.put(KeyClaimsTokenEnum.LANGUAJE.getDescripcion(), userPrincipal.getLanguaje());
+		claims.put(KeyClaimsTokenEnum.PERMITS.getDescripcion(), userPrincipal.getPermits());
 		Date expiryDate = new Date(System.currentTimeMillis() + currentMillis);
-		return Jwts.builder().setClaims(claims).setSubject(userPrincipal.getIdUsuario().toString())
+		return Jwts.builder().setClaims(claims).setSubject(userPrincipal.getUsername().toString())
 				.setIssuedAt(new Date()).setExpiration(expiryDate).signWith(SignatureAlgorithm.HS512, jwtSecret)
 				.compact();
 	}
@@ -80,7 +78,7 @@ public class JwtTokenProvider {
 	/**
 	 * getUserPrincipalFromToken - JwtTokenProvider - Spring Boot
 	 *
-	 * @author Jesus Garcia
+	 * @author DutyMachine
 	 * @since 1.0
 	 * @version jdk-11
 	 * @param String - token del usuario
@@ -90,12 +88,10 @@ public class JwtTokenProvider {
 		Claims claims = getClaims(token);
 		CodifyUserDto codifyUser = new CodifyUserDto();
 		codifyUser.setAuthorities(getPermisos(token));
-		codifyUser.setIdUsuario(getUserIdFromJWT(token));
 		codifyUser.setFullName(findKeyClaimsInData(KeyClaimsTokenEnum.FULL_NAME, claims));
 		codifyUser.setUsername(findKeyClaimsInData(KeyClaimsTokenEnum.USERNAME, claims));
-		codifyUser.setRut(findKeyClaimsInData(KeyClaimsTokenEnum.RUT, claims));
-		codifyUser.setIdTenant(findKeyClaimsInData(KeyClaimsTokenEnum.TENANT, claims));
-		codifyUser.setFuncionalidades(getFuncionalidadDtos(token));
+		codifyUser.setLanguaje(findKeyClaimsInData(KeyClaimsTokenEnum.LANGUAJE, claims));
+		codifyUser.setPermits(getPermits(token));
 
 		return codifyUser;
 	}
@@ -103,7 +99,7 @@ public class JwtTokenProvider {
 	/**
 	 * validateToken - JwtTokenProvider - Spring Boot
 	 *
-	 * @author Jesus Garcia
+	 * @author DutyMachine
 	 * @since 1.0
 	 * @version jdk-11
 	 * @param authToken - Secuencia de caracteres que representa el token recibido
@@ -130,7 +126,7 @@ public class JwtTokenProvider {
 	/**
 	 * findKeyClaimsInData - JwtTokenProvider - Spring Boot
 	 *
-	 * @author Jesus Garcia
+	 * @author DutyMachine
 	 * @since 1.0
 	 * @version jdk-11
 	 * @param String, Claims  - token del usuario, caracteristicas de usuario
@@ -143,7 +139,7 @@ public class JwtTokenProvider {
 	/**
 	 * getClaims - JwtTokenProvider - Spring Boot
 	 *
-	 * @author Jesus Garcia
+	 * @author DutyMachine
 	 * @since 1.0
 	 * @version jdk-11
 	 * @param String - token del usuario
@@ -187,17 +183,16 @@ public class JwtTokenProvider {
 	/**
 	 * getFuncionalidadDtos - JwtTokenProvider - Spring Boot
 	 *
-	 * @author Jesus Garcia
+	 * @author DutyMachine
 	 * @since 1.0
 	 * @version jdk-11
 	 * @param token  - token del usuario, extraer caracteristica de funcionalidades
 	 * @return Listado - Listado de funcionalidades (List<FuncionalidadDto>)
 	 */
 	@SuppressWarnings("unchecked")
-	public List<FuncionalidadDto> getFuncionalidadDtos(String token) throws IOException {
+	public List<PermitDto> getPermits(String token) throws IOException {
 		Claims claims = getClaims(token);
-		List<FuncionalidadDto> funcionalidades = claims.get(KeyClaimsTokenEnum.FUNCIONALIDADES.getDescripcion(), ArrayList.class);
-		return funcionalidades;
+		return claims.get(KeyClaimsTokenEnum.PERMITS.getDescripcion(), ArrayList.class);
 	}
 	
 }

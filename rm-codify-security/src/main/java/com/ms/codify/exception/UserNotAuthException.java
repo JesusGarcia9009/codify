@@ -3,7 +3,7 @@ package com.ms.codify.exception;
 /**
  * Excepcion para manejar que el Usuario no esta autenticado
  * 
- * @author Jesus Garcia
+ * @author DutyMachine
  * @version 1.0 Creacion
  * @since Java 11
  */
