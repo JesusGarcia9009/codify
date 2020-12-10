@@ -1,0 +1,22 @@
+.login-form{
+  margin: 0 auto; 
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-Column{
+  height: 100vh;
+  background-image: url('./assets/img/v35_2071.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+}
+
+@media (max-width: 770px){
+  .left-Column{
+      display: none;
+  }
+}
