@@ -1,23 +1,30 @@
--- PERFIL
-INSERT INTO codify_security.perfil (descripcion,nombre) VALUES ('Administrador Codify','Administrador');
 
--- FUNCIONALIDAD
-INSERT INTO codify_security.funcionalidad (descripcion,nombre) VALUES ('Modulo de seguridad de la aplicacion codify','Seguridad');
+--  Auto-generated SQL script #Languaje
+INSERT INTO codify_security.languaje (code,name) VALUES ('EN','English');
+INSERT INTO codify_security.languaje (code,name) VALUES ('ES','Spanish');
+INSERT INTO codify_security.languaje (code,name) VALUES ('PT','Portuguese');
+INSERT INTO codify_security.languaje (code,name) VALUES ('FR','French');
+INSERT INTO codify_security.languaje (code,name) VALUES ('DE','German');
 
--- TENANT
-INSERT INTO codify_security.tenant (llave,nombre) VALUES ('codify','Codify App');
+--  Auto-generated SQL script #state
+INSERT INTO codify_security.state (id,name)	VALUES (1,'Uninitialized');
+INSERT INTO codify_security.state (id,name)	VALUES (2,'Active');
+INSERT INTO codify_security.state (id,name)	VALUES (3,'Blocked');
+INSERT INTO codify_security.state (id,name)	VALUES (4,'Expired');
 
+--  Auto-generated SQL script #permit
+INSERT INTO codify_security.permit (id,description)	VALUES (1,'User Manager');
 
--- PERFIL_FUNCIONALIDAD
-INSERT INTO codify_security.perfil_funcionalidad (id_perfil_funcionalidad,escritura,lectura,id_funcionalidad,id_perfil)	
-VALUES (1,1,1,(select id_funcionalidad from codify_security.funcionalidad f where f.nombre like('Seguridad')),(select id_perfil from codify_security.perfil p where p.nombre like('Administrador')));
+--  Auto-generated SQL script #permit
+INSERT INTO codify_security.profile (id,name) VALUES (1,'Administrator');
 
+--  Auto-generated SQL script #profile_permit
+INSERT INTO codify_security.profile_permit (id_profile,id_permit)	VALUES (1,1);
 
--- USUARIO
-INSERT INTO codify_security.usuario (apellido_materno,apellido_paterno,email,nombre,pass,rut,id_tenant) VALUES ('Hernadez','Garcia','jesusmanuelgarcia9009@gmail.com','Jesus','$2a$04$nEZr2jGP4zZUt09XAKAGLezJzaTaDpIuylVgHOv2RNl9MrETKHiRq','26873611-5',(select id_tenant from codify_security.tenant t where t.llave like('codify')));
+--  Auto-generated SQL script #user
+INSERT INTO codify_security.`user` (username,password,first_name,middle_name,last_name,email,code_languaje,id_state) VALUES ('jesusmanuelgarcia9009@gmail.com','$2a$04$nEZr2jGP4zZUt09XAKAGLezJzaTaDpIuylVgHOv2RNl9MrETKHiRq','Jesus','Garcia','Hernandez','jesusmanuelgarcia9009@gmail.com','EN',2);
 
--- USUARIO_PERFIL
-INSERT INTO codify_security.usuario_perfil (id_usuario,id_perfil) VALUES ((select id_usuario from codify_security.usuario u where u.email like('jesusmanuelgarcia9009@gmail.com')),(select id_perfil from codify_security.perfil p where p.nombre like('Administrador')));
-
+--  Auto-generated SQL script #user_profile
+INSERT INTO codify_security.user_profile (id_user,id_profile,id_object)	VALUES ('jesusmanuelgarcia9009@gmail.com',1,'125');
 
 COMMIT;

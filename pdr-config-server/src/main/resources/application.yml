@@ -1,0 +1,22 @@
+# HTTP Server
+server:
+  port: 8888
+
+spring:
+  # Spring Cloud Config Server Repository
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitlab.com/jesusmanuelgarcia9009/codify-develop-props.git
+          skipSslValidation: true
+          username: jesusmanuelgarcia9009
+          password: jesus.garcia
+        prefix: /config  
+  
+  #security:
+  #  user:
+  #    name:test
+  #    password:test.123   
+    
+    

@@ -1,5 +1,5 @@
 -- codify_security.languaje definition
-CREATE TABLE `languaje` (
+CREATE TABLE `codify_security`.`languaje` (
   `code` char(2) NOT NULL,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`code`)
@@ -7,8 +7,8 @@ CREATE TABLE `languaje` (
 
 
 -- codify_security.state definition
-CREATE TABLE `state` (
-  `id` bigint(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `codify_security`.`state` (
+  `id` bigint(10) NOT NULL ,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -16,8 +16,8 @@ CREATE TABLE `state` (
 
 -- codify_security.permit definition
 
-CREATE TABLE `permit` (
-  `id` bigint(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `codify_security`.`permit` (
+  `id` bigint(10) NOT NULL,
   `description` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -25,7 +25,7 @@ CREATE TABLE `permit` (
 
 -- codify_security.profile definition
 
-CREATE TABLE `profile` (
+CREATE TABLE `codify_security`.`profile` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
@@ -34,7 +34,7 @@ CREATE TABLE `profile` (
 
 -- codify_security.profile_permit definition
 
-CREATE TABLE `profile_permit` (
+CREATE TABLE `codify_security`.`profile_permit` (
   `id_profile` bigint(20) NOT NULL,
   `id_permit` bigint(10) NOT NULL,
   PRIMARY KEY (`id_profile`,`id_permit`),
@@ -47,7 +47,7 @@ CREATE TABLE `profile_permit` (
 
 -- codify_security.`user` definition
 
-CREATE TABLE `user` (
+CREATE TABLE `codify_security`.`user` (
   `username` varchar(50) NOT NULL,
   `password` varchar(200) NOT NULL,
   `first_name` varchar(50) NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE `user` (
 
 -- codify_security.user_profile definition
 
-CREATE TABLE `user_profile` (
+CREATE TABLE `codify_security`.`user_profile` (
   `id_user` varchar(50) NOT NULL,
   `id_profile` bigint(20) NOT NULL,
   `id_object` varchar(50) NOT NULL,
@@ -77,5 +77,6 @@ CREATE TABLE `user_profile` (
   CONSTRAINT `FK_USER_PROFILE_ID_PROFILE` FOREIGN KEY (`id_profile`) REFERENCES `profile` (`id`),
   CONSTRAINT `FK_USER_PROFILE_ID_USER` FOREIGN KEY (`id_user`) REFERENCES `user` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 

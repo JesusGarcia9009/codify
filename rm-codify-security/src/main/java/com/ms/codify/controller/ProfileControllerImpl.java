@@ -25,7 +25,7 @@ public class ProfileControllerImpl implements ProfileController {
 	
 	@Override
 	@GetMapping("/get-profile-list")
-	@PreAuthorize("hasAuthority('Administrador')")
+	@PreAuthorize("hasAuthority('Administrator')")
 	public ResponseEntity<List<ProfileResponseDto>> getAllProfiles() {
 		log.info("[getAllProfiles]::start of method");
 		List<ProfileResponseDto> data = profileService.getAll();
