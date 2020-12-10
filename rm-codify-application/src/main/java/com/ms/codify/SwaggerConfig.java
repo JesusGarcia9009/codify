@@ -83,7 +83,7 @@ public class SwaggerConfig {
                 "https://www.releasemachine.com",
                 "soluciones@releasemachine.cl");
         return new ApiInfoBuilder()
-                .title("Capa de servicios de la aplicacion Codify - MS-SEGURIDAD")
+                .title("Codify application service layer - MS-APPLICATION")
                 .version("1.0")
                 .contact(contact)
                 .license("Apache License Version 2.0")
