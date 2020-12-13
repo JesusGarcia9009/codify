@@ -39,13 +39,13 @@ public class User implements java.io.Serializable {
 	@JoinColumn(name = "id_state", nullable = false)
 	private State state;
 	
-	@Column(name = "password", nullable = false, length = 200)
+	@Column(name = "password", nullable = true, length = 200)
 	private String password;
 	
 	@Column(name = "first_name", nullable = false, length = 50)
 	private String firstName;
 	
-	@Column(name = "middle_name", nullable = false, length = 50)
+	@Column(name = "middle_name", nullable = true, length = 50)
 	private String middleName;
 	
 	@Column(name = "last_name", nullable = false, length = 50)
